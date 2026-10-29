@@ -1,0 +1,14 @@
+# Local infrastructure only. Add just the services this project needs (DB, Redis, Floci/LocalStack...).
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: wispok_user
+      POSTGRES_PASSWORD: wispok_password
+      POSTGRES_DB: wispok_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db-data/:/var/lib/postgresql/data/
